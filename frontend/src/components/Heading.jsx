@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Header = ({ label }) => {
+export const Heading = ({ label }) => {
   return (
-    <Header className="py-4 text-center">
+    <div className="py-4 text-center">
       <h1 className="text-2xl font-bold text-gray-800">{label}</h1>
-    </Header>
+    </div>
   );
 };
-
-export default Header;

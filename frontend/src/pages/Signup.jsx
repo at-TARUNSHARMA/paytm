@@ -1,65 +1,58 @@
-import React, { useState } from 'react';
-import Header from '../components/header';
-import { components } from 'react-trello';
+import { useState } from "react";
+import { BottomWarning } from "../components/BottomWarning";
+import { Button } from "../components/Button";
+import { Heading } from "../components/Heading";
+import { InputBox } from "../components/InputBox";
+import { SubHeading } from "../components/SubHeading";
+import axios from "axios";
 
-export const SignUp = () => {
+const Signup = () => {
+  const [firstName, setFirstName] =useState("");
+  const [lastName, setLastName] =useState("");
+  const [username, setUsername] =useState("");
+  const [password, setPassword] =useState("");
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-md shadow-md">
-        <Header label="Sign Up" />
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="you@example.com"
-            />
+    <div className="bg-slate-300 h-screen flex justify-center">
+      <div className="flex flex-col justify-center">
+        <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
+          <Heading label={"Sign up"} />
+          <SubHeading label={"Enter your information to create an account"} />
+          <input onChange={e=>{
+            setFirstName(e.target.value);
+          }} />
+          <InputBox onChange={e=>{
+            setFirstName(e.target.value);
+          }} placeholder="John" label={"First Name"} />
+          <InputBox onChange={(e)=>{
+            setLastName(e.target.value);
+          }} placeholder="Doe" label={"Last Name"} />
+          <InputBox onChange={(e)=>{
+            setUsername(e.target.value);
+          }}placeholder="harkirat@gmail.com" label={"Email"} />
+          <InputBox onChange={(e)=>{
+            setPassword(e.target.value);
+          }}placeholder="123456" label={"Password"} type="password" />
+          
+          <div className="pt-4">
+            <Button onPress={async()=>{
+              const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+                username,
+                firstName,
+                lastName,
+                password
+              });
+              response.data
+            }} label={"Sign up"} />
           </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Enter your password"
-            />
-          </div>
-          <div>
-            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-            <input
-              id="confirm-password"
-              name="confirm-password"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Confirm your password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
-          >
-            Sign Up
-          </button>
-        </form>
-        <div className="mt-6 text-sm text-center text-gray-500">
-          Already have an account? <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+          <BottomWarning 
+            label={"Already have an account?"} 
+            buttonText={"Sign in"} 
+            to={"/signin"} 
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Signup;
