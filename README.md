@@ -24,9 +24,10 @@ React Router: For routing and navigation between different pages.
 Axios: For making API requests.
 Tailwind CSS: Utility-first CSS framework for styling.
 Node.js (Backend - Optional): For backend API implementation.
-Project Structure
-bash
-Copy code
+
+
+##Project Structure
+
 ├── public
 ├── src
 │   ├── components
