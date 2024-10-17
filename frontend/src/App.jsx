@@ -8,17 +8,6 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        {/* Navigation Links */}
-        <nav className="p-6 bg-white shadow-md">
-          <ul className="flex justify-center space-x-6">
-            <li>
-              <Link to="/signin" className="text-indigo-600 hover:underline">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup" className="text-indigo-600 hover:underline">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
 
         {/* Routing Setup */}
         <Routes>

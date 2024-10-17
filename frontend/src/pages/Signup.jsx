@@ -41,7 +41,8 @@ const Signup = () => {
                 lastName,
                 password
               });
-              response.data
+              localStorage.setItem("token", response.data.token)
+              localStorage.delete("token");
             }} label={"Sign up"} />
           </div>
           <BottomWarning 
