@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BottomWarning } from "../components/BottomWarning";
-import { Button } from "../components/Button";
+import { Button } from "../components/button";
 import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
@@ -28,15 +28,19 @@ const SignIn = () => {
             type="password" 
           />
           <div className="pt-4">
-            <Button 
+            <Button
+              label={"Sign In"}
               onPress={async () => {
-                const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
-                  username,
-                  password,
-                });
-                localStorage.setItem("token", response.data.token);
-              }} 
-              label={"Sign In"} 
+                try {
+                  const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+                    username,
+                    password,
+                  });
+                  localStorage.setItem("token", response.data.token);
+                } catch (error) {
+                  console.error("Error signing in:", error);
+                }
+              }}
             />
           </div>
           <div>
