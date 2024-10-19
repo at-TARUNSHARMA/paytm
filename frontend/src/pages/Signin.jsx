@@ -5,6 +5,7 @@ import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
 import axios from "axios";
+import { BASE_URL } from "../BaseUrl";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -32,7 +33,7 @@ const SignIn = () => {
               label={"Sign In"}
               onPress={async () => {
                 try {
-                  const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+                  const response = await axios.post(BASE_URL+"user/signin", {
                     username,
                     password,
                   });
