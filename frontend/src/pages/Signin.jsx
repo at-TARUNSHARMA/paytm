@@ -4,12 +4,14 @@ import { Button } from "../components/button";
 import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../BaseUrl";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="bg-slate-300 h-screen flex justify-center">
@@ -37,7 +39,13 @@ const SignIn = () => {
                     username,
                     password,
                   });
-                  localStorage.setItem("token", response.data.token);
+                  if(response.status === 200){
+                    localStorage.setItem("token", response.data.token);
+                    alert("Signup successful");
+                    navigate("/dashboard");
+                  }else{
+                    alert("Signup failed");
+                  }
                 } catch (error) {
                   console.error("Error signing in:", error);
                 }
