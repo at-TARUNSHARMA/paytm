@@ -1,54 +1,40 @@
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import Navbar from "../components/Navbar"; // Import the Navbar component
 
-const Sendmoney = () => {
-  const [recipient, setRecipient] = useState("");
+const SendMoney = () => {
   const [amount, setAmount] = useState("");
+  const [recipient, setRecipient] = useState("");
 
-  const handleSendmoney = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/api/v1/transactions/send", {
-        recipient,
-        amount,
-      });
-
-      if (response.status === 200) {
-        alert("Money sent successfully!");
-      } else {
-        alert("Transaction failed");
-      }
-    } catch (error) {
-      alert("An error occurred during the transaction");
-    }
+  const handleSendMoney = () => {
+    alert(`Sending $${amount} to ${recipient}`);
+    // Add actual send money logic here
   };
 
   return (
-    <div className="bg-slate-300 h-screen flex justify-center">
-      <div className="flex flex-col justify-center">
-        <div className="rounded-lg bg-white w-80 text-center p-4 h-max">
-          <h2 className="text-xl font-bold">Send Money</h2>
-
+    <div>
+      <Navbar />
+      <div className="p-4">
+        <h1 className="text-2xl font-bold">Send Money</h1>
+        <div className="mt-4">
           <input
             type="text"
-            placeholder="Recipient's Email"
+            placeholder="Recipient's Name"
             value={recipient}
             onChange={(e) => setRecipient(e.target.value)}
-            className="mt-4 p-2 border rounded w-full"
+            className="border rounded py-2 px-4 w-full mb-4"
           />
-
           <input
             type="number"
             placeholder="Amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="mt-4 p-2 border rounded w-full"
+            className="border rounded py-2 px-4 w-full mb-4"
           />
-
-          <button 
-            onClick={handleSendmoney} 
-            className="w-full mt-4 bg-blue-500 text-white py-2 rounded"
+          <button
+            onClick={handleSendMoney}
+            className="bg-blue-500 text-white rounded py-2 px-4 hover:bg-blue-600"
           >
-            Send
+            Send Money
           </button>
         </div>
       </div>
@@ -56,4 +42,4 @@ const Sendmoney = () => {
   );
 };
 
-export default Sendmoney;
+export default SendMoney;

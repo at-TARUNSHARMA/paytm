@@ -1,0 +1,29 @@
+/* Basic link styles */
+.nav-link {
+    position: relative;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.6s ease, background-color 0.6s ease, font-size 0.6s ease;
+  }
+  
+  /* On hover */
+  .nav-link:hover {
+    background-color: rgba(135, 206, 235, 0.1); /* Lighter sky blue */
+  }
+  
+  /* Active link styles */
+  .nav-link.active {
+    color: #ffffff; /* Set active link color */
+    font-weight: 600;
+    background-color: rgba(135, 206, 235, 0.2); /* Slightly lighter background */
+    transform: translateY(5px) scale(1.1); /* Move downward and scale up */
+    transition: transform 0.6s ease, background-color 0.6s ease, font-size 0.6s ease; /* Adjusted timing */
+  }
+  
+  /* Transition reverse when navigating away */
+  .nav-link:not(.active) {
+    transform: translateY(0) scale(1);
+    transition: transform 0.6s ease, background-color 0.6s ease, font-size 0.6s ease; /* Adjusted timing */
+  }
+  

@@ -7,6 +7,7 @@ import { SubHeading } from "../components/SubHeading";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../BaseUrl";
+import Footer from "../components/Footer";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   return (
+    <>
     <div className="bg-slate-300 h-screen flex justify-center">
       <div className="flex flex-col justify-center">
         <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
@@ -57,7 +59,9 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-    </div>
+      
+    </div><Footer />
+    </>
   );
 };
 

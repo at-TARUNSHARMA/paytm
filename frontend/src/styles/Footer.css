@@ -1,0 +1,35 @@
+/* Global styles in your CSS file */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensures full height */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link {
+    position: relative;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+}
+
+/* On hover */
+.footer-link:hover {
+    background-color: rgba(135, 206, 235, 0.1); /* Lighter sky blue */
+}
+
+/* Active link styles */
+.footer-link.active {
+    color: #ffffff; /* Set active link color */
+    font-weight: 600;
+    background-color: rgba(135, 206, 235, 0.2); /* Slightly lighter background */
+}
+
+/* No transition effect */
+.footer-link:not(.active) {
+    transform: translateY(0) scale(1);
+}

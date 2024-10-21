@@ -7,6 +7,8 @@ import { SubHeading } from "../components/SubHeading";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../BaseUrl";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const [firstName, setFirstName] =useState("");
@@ -37,23 +39,35 @@ const Signup = () => {
           }}placeholder="123456" label={"Password"} type="password" />
           
           <div className="pt-4">
-            <Button onPress={async()=>{
-              const response = await axios.post(BASE_URL+"user/signup", {
-                username,
-                firstName,
-                lastName,
-                password
-              });
-              if(response.status === 200){
-                localStorage.setItem("token", response.data.token);
-                alert("Signup successful");
-                navigate("/dashboard");
-              }else{
-                alert("Signup failed");
-              }
-              // localStorage.delete("token");
-            }} label={"Sign up"} />
+            <Button 
+              onPress={async () => {
+                try {
+                  const response = await axios.post(BASE_URL + "user/signup", {
+                    username,
+                    firstName,
+                    lastName,
+                    password
+                  });
+                  
+                  if (response.status === 200) {
+                    localStorage.setItem("token", response.data.token);
+                    toast.success("Signup successful!");
+                    setTimeout(() => {
+                      navigate("/dashboard");
+                    }, 2000);
+                  } else {
+                    alert("Signup failed");
+                  }
+                } catch (error) {
+                  // Handle the error here
+                  console.error("Signup error:", error);
+                  alert("An error occurred during signup. Please try again.");
+                }
+              }} 
+              label={"Sign up"} 
+            />
           </div>
+
           <BottomWarning 
             label={"Already have an account?"} 
             buttonText={"Sign in"} 
