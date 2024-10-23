@@ -37,3 +37,56 @@ This project is a basic version of Paytm designed to handle user authentication,
 │   ├── index.css                  # Global CSS, mainly Tailwind
 │   ├── index.js                   # Entry point of the React app
 └── package.json
+
+
+Features
+Sign-up Page
+Allows users to create an account by entering their first name, last name, email, and password.
+Integrated with an API to submit sign-up data to the backend.
+Includes a dynamic bottom section linking to the sign-in page if the user already has an account.
+Sign-in Page
+Allows users to log in by entering their email and password.
+Integrated with an API to authenticate the user and store a token in localStorage.
+Includes a dynamic bottom section linking to the sign-up page for new users.
+Modular Components
+Button.jsx: A reusable button component used across the forms.
+InputBox.jsx: A reusable input field component for forms.
+Heading.jsx: For page titles.
+SubHeading.jsx: For subtitles on forms.
+BottomWarning.jsx: A bottom section that dynamically changes based on the page (sign-up/sign-in).
+Installation
+Clone the repository:
+
+bash
+Copy code
+git clone https://github.com/your-username/paytm-clone.git
+Navigate to the project directory:
+
+bash
+Copy code
+cd paytm-clone
+Install dependencies:
+
+bash
+Copy code
+npm install
+Start the development server:
+
+bash
+Copy code
+npm start
+Usage
+Open your browser and go to http://localhost:3000.
+Navigate between the sign-up and sign-in pages.
+Use the forms to create an account or log in.
+API Integration
+Sign-up API: The sign-up form is integrated with a backend API to send the user details to create a new account.
+Sign-in API: The sign-in form communicates with a backend API to authenticate the user and store the JWT token in localStorage.
+Contributing
+Feel free to submit pull requests or issues if you would like to contribute to this project. Any improvements or suggestions are welcome.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+vbnet
+Copy code
