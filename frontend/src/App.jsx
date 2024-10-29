@@ -4,6 +4,7 @@ import SignIn from './pages/Signin';
 import SignUp from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import SendMoney from "./pages/Sendmoney";
+import Profile from "./pages/Profile"; 
 import Receivemoney from "./pages/Receivemoney";
 import BankTransfer from "./dashboardcomponent/BankTransfer";
 import Recharge from "./dashboardcomponent/Recharge";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/send-money" element={<SendMoney />} />
           <Route path="/receive-money" element={<Receivemoney />} />
           
