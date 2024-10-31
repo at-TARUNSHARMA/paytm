@@ -20,6 +20,7 @@ This project is a basic version of Paytm designed to handle user authentication,
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **Node.js** (Optional for backend): Can be used for implementing backend API services.
 
+
 ## Project Structure
 ```bash
 ├── public
